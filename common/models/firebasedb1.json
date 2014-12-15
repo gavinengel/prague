@@ -1,0 +1,15 @@
+{
+  "name": "firebasedb1",
+  "plural": "firebasedb1",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "somefield": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+  <meta charset="utf-8">
+
+  <?php // Google Chrome Frame for IE ?>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <title>inventory api</title>
+
+    
+    <style>
+
+    #jsoncell {
+      font-weight: normal;
+      font-family: courier;
+      font-size: .75em;
+      color: #01579b;
+      display: none
+      }
+
+      #statuscell {
+      font-weight: normal;
+      font-family: courier;
+      font-size: .75em;
+      color: green;
+      }
+   
+    #create{
+      display:none;
+      font-weight: normal;
+      border: 2px;
+      border-color: white;
+     
+    }
+    
+
+    #update{
+      display:none;
+      font-weight: normal;
+      border: 2px;
+      border-color: white;
+     
+    }
+
+html, body, body div, h1, h2, h3, h4, p, pre, em, img, b, i, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 12px;
+  font-weight: normal;
+  vertical-align: baseline;
+  background: transparent;
+  font-family: roboto, arial, helvetica, sans-serif;
+  font-size: 100%;
+}
+
+
+
+a, a:visited{
+  color: #01579b;
+  text-decoration: none;
+}
+
+
+body {
+background: #eceff1;
+ color: #fff;
+ margin: 0px;
+ font-family: roboto, arial, helvetica, sans-serif;
+ font-size: 12px;
+}
+
+header{
+  margin: 0px;
+   background: #03a9f4;
+   display: block;
+ margin-bottom: 0px; 
+ padding: 8px;
+}
+
+header a, a:visited{
+  color: #fff;
+  text-decoration: none;
+ } 
+
+#main {
+  background: #eee;
+}
+
+}
+/* basic styles */
+h1, h2, h3, h4, h5, h6 {padding: 0; }
+
+h1 { font-size: 2em; 
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin: 0px;
+}
+h2 { 
+  font-size: 1.75em;
+ font-weight: 500;
+ margin-bottom: 8px;
+}
+
+h4{
+  font-size: 1em; 
+  margin-bottom: 1em;
+}
+
+.button-lightblue{
+      background: #656273;
+    color: #ddd;
+  font-weight: 100em;
+  padding: 5px;
+  border: 3px;
+  
+  width: auto;
+  }
+
+.bar{
+  margin: 0px;
+  margin-top: 8px;
+  margin-bottom: 3px;
+ 
+}
+
+.button-teal{
+  background:   #009688;
+  color: #ddd;
+  font-weight: bold;
+  padding: 5px;
+  border: 3px;
+  width: auto;
+  } 
+
+  .button-blued:hover{
+    background: #0288d1;
+  }  
+
+  .button-blued{
+  background:   #b3e5fc;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  border: 3px;
+  width: auto;
+  }
+
+
+  .button-teal:hover{
+    background: #00796b;
+  }
+  .button-red{
+  background:   #f9bdbb;
+  color: #fff;
+  font-weight: bold;
+  padding: 5px;
+  border: 3px;
+  width: auto;
+  }
+
+  .button-red:hover{
+    background: #f36c60;
+  }
+
+ .jsoncell{
+  margin-bottom: 20px;
+  color: black;
+}
+       
+
+
+.success{
+  font-weight: bold;
+  font-style: italic;
+  color: #01579b;
+  font-size: 1em;
+}
+
+.error{
+  font-weight: bold;
+  font-style: italic;
+  color: #e51c23;
+  font-size: 1em;
+}
+
+.cardform{
+      background:#fff;
+      border:1px solid #AAA;
+      border-bottom:3px solid #BBB;
+      padding:0px;
+      margin: 3px;
+      overflow: hidden;
+      color: #01579b;
+      float: left;
+
+}
+
+.cardformbody{
+  background: #fff;
+  margin: 3px;
+  padding: 10px;
+}
+
+
+fieldset {
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+  
+    margin-top: 1em;
+}
+
+legend {
+    padding:0 5px;
+    text-align:left;
+    color: #fff;
+}
+
+fieldset > legend + div {
+    margin-top:0;
+}
+fieldset > div:last-child {
+    margin-bottom:0;
+}
+label {
+    display:inline-block;
+    width:116px;
+}
+input {
+    width:168px;
+}
+input[type="submit"] {
+    width:auto;
+}
+
+
+
+.cardformtitle{
+  font-weight: bold;
+  font-size: 1em;
+  float: none;
+  width: 300;
+  overflow: hidden;
+  color: #37474f;
+  border-bottom: 0px solid #ddd;
+  background: #fff;
+  padding-top: 8px;
+}
+
+
+  .card {
+      background:#fff;
+      border:1px solid #AAA;
+      border-bottom:3px solid #BBB;
+      padding:0px;
+      margin: 3px;
+      overflow: hidden;
+      color: #01579b;
+      float: left;
+}
+
+.altlinks { 
+  color:#01579b;
+  
+}
+.cardbody{
+  overflow: hidden;
+  height: 110px;
+  background: #fff;
+}
+.cardfooter{
+  display: inline-block;
+  overflow: visible; 
+  
+}
+#content {
+
+}
+
+.cardtitle{
+  font-weight: bold;
+  font-size: 1em;
+  float: none;
+  width: 300px;
+  overflow: hidden;
+  color: #37474f;
+  border-bottom: 0px solid #ddd;
+  background: #fff;
+}
+
+.float-left .card .cardform {
+    float:left;
+    width:250px;  
+    height:225px;
+}
+
+.card .cardform h1 {
+    margin:0px;
+    padding:10px;
+    padding-bottom:0px;
+}
+
+.card div {
+    margin:0px;
+    padding:3px;
+    width: 300px;
+}
+
+.cardform div {
+    padding:3px;
+    padding: 3px;
+}
+
+
+.parsedinventory{
+  margin-top: 1em;
+  background: #fff;
+}
+
+
+
+
+
+  .
+    </style>
+  </head>
+
+<body onload="getItems()" >
+<header role=banner>
+  <h1><a href="./">inventory</a></h1>
+  <div>a simple REST api</div>
+
+</header> 
+
+  <div class=bar>
+    <input type="button" class="button-teal" value= "Create New Item" onclick="createupdate();return false;">&nbsp;
+    <input type="button" value='json' onclick="showhidejson();" id="showjson" class="button-lightblue" >
+  </div> 
+<div id="main" class="main">
+
+  <div id="jsoncell" class="jsoncell">waiting ...</div>
+  <form id="create" class="content float-left">
+    <fieldset>
+      <div class='content float-left'>
+        <div class='cardform'>
+          <div class='cardformtitle'>
+            Create Item
+          </div>
+          <div class='cardformbody'>
+            <label for="addname">Item Name*:</label>
+            <input type="text" id="addname" name="addname" value="">
+          </div>
+          <div class='cardformbody'>
+            <label for="adddescription">Description:</label> 
+            <input type="text" id="adddescription" name="adddescription" value="">
+          </div>
+          <div class="cardformbody">
+            <label>Quantity*:</label>
+            <input type="text" id="addquantity" name="addquantity" value="" required>
+          </div>
+          <div class="cardformbody">
+            <label for="addprice">Unit Price:</label>
+            <input type="text" id="addprice" name="addprice" value="">
+          </div>
+          <div class='cardfooter'>
+            <input type="button" class="button-teal" value="Create" onClick="javascript:addItem();">&nbsp;
+            <input type="button" class="button-red" value="Cancel" onClick="javascript:document.getElementById('create').style.display='none'; return false;">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+  <form id="update">
+    <fieldset>
+
+       <div class='content float-left'>
+        <div class='cardform'>
+          <div class='cardformtitle'>
+              Update Item
+ 
+          </div>
+          <div class='cardformbody'>
+            <label for="itemid">Item ID:</label>
+            <input type="text" id="itemid" name="itemid" value="" readonly>
+          </div>
+          <div class="cardformbody">
+            <label for="name">Item Name (required):</label>
+            <input type="text" id="name" name="name" value="">
+          </div>
+          <div class="cardformbody">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" value="">
+          </div>
+          <div class="cardformbody">
+            <label>Quantity:</label>
+            <input type="text" id="quantity" name="quantity" value="">
+          </div>
+          <div class="cardformbody">
+            <label for="price">Unit Price:</label>
+            <input type="text" id="price" name="addprice" value="">
+          </div>
+          <div class="cardfooter">
+          <input type="button" class="button-teal" value="Update" onClick="javascript:updateItem();">&nbsp;<input type="button" class="button-red" value="Cancel" onClick="javascript:document.getElementById('update').style.display='none';">
+          </div>
+        </div>
+      </div>
+      </fieldset>
+      </form> 
+  <div id="statuscell"></div>
+  <div id="parsedinventory" class="parsedinventory">
+</div> <!-- end main -->
+</body>
+<script>
+
+// ***************** Get All ********************************/
+
+function getItems(){
+
+  var hr = new XMLHttpRequest();
+  var url = 'http://inventory-ktleary.rhcloud.com/items/';
+  hr.open("GET", url, true);
+  hr.setRequestHeader('X-f35e678261fde10f4ce97d1a91881c9f', 'RopeSwing');
+  hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  hr.onreadystatechange = function(){
+    if (hr.readyState == 4 && hr.status == 200){
+      
+      var r = JSON.parse(hr.responseText);
+
+      //create array to sort return values
+      var keys = [], 
+      i,
+      len,
+      k;
+
+      for (k in r){
+        if (r.hasOwnProperty(k)){
+        keys.push(k);}
+      }
+
+      keys.sort();
+      keys.reverse();
+      len = keys.length;
+
+      for (i = 0; i < len; i++){
+        k = keys[i];
+        makeInventory(r[k].item_name, r[k].url, keys[i], r[k].item_desc, r[k].quantity, r[k].price, r[k].ts, i);
+        }
+      
+      document.getElementById("parsedinventory").innerHTML = inventory + "</div>";
+      document.getElementById("jsoncell").innerHTML = "<pre>"+hr.responseText.substr(0, 50) +"...</pre>";
+    }
+  }    
+  
+  hr.send();
+  
+  document.getElementById("parsedinventory").innerHTML="processing data ...";
+} 
+
+//**************************** Add Item ******************************/
+function addItem(){
+  var create = document.getElementById("create"),
+  name = create.addname,
+   description= create.adddescription, 
+   price=create.addprice, 
+   quantity = create.addquantity,
+   status =  document.getElementById("statuscell"),
+   vars, hr, url, itemlink;
+
+  // required name and quantity
+  if (name.value == ''){
+    status.innerHTML="<span class='error'>Name must be completed.</span>";
+    return;} 
+  if (quantity.value == ''){
+   status.innerHTML="<span class='error'>Quantity must be completed.</span>";
+   return;}
+  
+  vars = "name="+name.value+"&description="+description.value+"&quantity="+quantity.value+"&price="+price.value;  
+  
+  //create request
+  hr = new XMLHttpRequest();
+  url = 'http://inventory-ktleary.rhcloud.com/items/'
+  hr.open("POST", url, true);
+  hr.setRequestHeader('X-f35e678261fde10f4ce97d1a91881c9f', 'RopeSwing');
+  hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  hr.onreadystatechange = function(){
+    if (hr.readyState == 4 && hr.status == 200){
+      var r = JSON.parse(hr.responseText);
+      for (o in r){
+        itemlink = "<a href='http://"+r[o].url+"'>http://"+r[o].url+"</a>";         
+      }     
+    status.innerHTML='<span class=success>Successfully added. Resource: '+itemlink+'</span>';
+    
+    if (inventory != '') { inventory = "<div id=content name=content>";} 
+    getItems();
+    document.getElementById("jsoncell").innerHTML = hr.responseText.substr(0, 50);
+    create.reset();        
+    }
+  }    
+  hr.send(vars);
+  
+}
+
+
+
+//****************************** Upate Item ******************************/
+
+function updateItem(){
+  var update = document.getElementById("update"),
+  id = update.itemid,
+  name = update.name,
+  description = update.description,
+  price = update.price,
+  quantity = update.quantity,
+  status =  document.getElementById("statuscell"),
+  hr, url, vars
+
+  //create the request
+  hr = new XMLHttpRequest();
+  url = 'items/'
+ 
+ //validation
+  if (name.value == ''){
+    status.innerHTML="<span class='error'>Name must be completed.</span>";
+    return;
+  }
+  if (quantity == ''){
+    status.innerHTML="<span class='error'>Quantity must be completed.</span>";
+    return;
+  }
+  
+  vars = "itemid="+itemid.value+"&name="+name.value+"&description="+description.value+"&quantity="+quantity.value+"&price="+price.value;  
+  
+  hr.open("PUT", url, true);
+  hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  hr.onreadystatechange = function(){
+    if (hr.readyState == 4 && hr.status == 200){
+      status.innerHTML='<span class=success>Successfully Updated. ID:'+id.value+'</span>';
+     
+      if (inventory != '') { inventory = "<div id=content name=content>";} 
+      getItems();
+      document.getElementById("jsoncell").innerHTML = hr.responseText.substr(0, 50);
+      update.reset();
+      update.style.display="none";
+    }
+  }
+  hr.send(vars);
+  status.innerHTML="waiting ...";
+} // end update
+
+
+//*************************** Delete Item ***********************************/
+
+
+function deleteItem(id){
+
+  //create the request
+  var hr = new XMLHttpRequest();
+  var url = 'items/';
+  var vars = "del_itemid="+id;  
+
+  hr.open("DELETE", url, true);
+
+  hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  hr.onreadystatechange = function(){
+    if (hr.readyState == 4 && hr.status == 200){
+      var return_data = hr.responseText + '';
+
+      document.getElementById("statuscell").innerHTML = "<span class='success'>Successfully Deleted item: " + id + "</span>";
+      if (inventory != '') {inventory = "<div class='content float-left'>";}
+      getItems();
+      document.getElementById("jsoncell").innerHTML = return_data;
+    }
+  }    
+
+  hr.send(vars);
+}
+
+
+//**************************  END AJAX **************************************
+
+
+//populate the Update Form
+function makeUpdate (id) {
+  document.getElementById("update").style.display = "table-row";
+
+   
+  var hr = new XMLHttpRequest();
+  var url = 'items/'+id;
+  hr.open("GET", url, true);
+  hr.onreadystatechange = function(){
+    if (hr.readyState == 4 && hr.status == 200){
+      var r = JSON.parse(hr.responseText);
+       for (o in r){
+        document.getElementById("itemid").value = r[o].item_id;
+        document.getElementById("name").value = r[o].item_name;
+        document.getElementById("description").value = r[o].item_desc;
+        document.getElementById("price").value = r[o].price;
+        document.getElementById("quantity").value = r[o].quantity;
+        document.getElementById("statuscell").innerHTML= '';
+
+
+    document.getElementById('jsoncell').innerHTML=hr.responseText.substr(0, 50);
+      };
+    }
+  }    
+  
+  hr.send();
+
+  }
+
+
+  //make display items
+  var inventory = "<div class='content float-left'>";
+  function makeInventory(myname, myhref, id, item_desc, quantity, price, ts){
+    inventory += "<div class='card'><div class='cardtitle'>"+myname+"</div>"+
+    "<div class='cardbody'><div>Description: "+item_desc.substr(0, 75)+"</div><div>"+
+    "Quantity: "+quantity+"</div><div>Price: $"+price+"<br>Resource Id: "+id+"</div><div><small><i>updated:"+ts+"</i></small></div></div>"+
+    "<div class=cardfooter'><a href='#update'><input type='button' value='Update'class='button-blued' value='update' onClick='makeUpdate("+id+");'></a>"+
+    "&nbsp;&nbsp;<input type='button' value='Delete' class='button-red' onclick='deleteItem("+id+");return false;'></div></div>";
+ }
+
+      function createupdate(){
+        document.getElementById("create").style.display = "table-row";
+
+      }
+
+      var jsonflag = false;
+    function showhidejson(){
+  
+  if (!jsonflag){
+     document.getElementById('jsoncell').style.display ='inline';
+        document.getElementById('showjson').value ='hide';
+     jsonflag=true;
+     return false; 
+  }else
+    document.getElementById('jsoncell').style.display ='none';
+    document.getElementById('showjson').value ='json';
+     jsonflag=false;
+     return false; 
+    }
+
+</script>
+</html>
